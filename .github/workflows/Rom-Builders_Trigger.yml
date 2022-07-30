@@ -1,0 +1,29 @@
+name: Rom-Builders Trigger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+       - name: Configuring git environment
+         run: |
+            git config --global user.name RahulPalXDA
+            git config --global user.email RahulPal.XDA@gmail.com
+            git config --global core.editor nano
+
+       - name: Syncing repo & making empty commit.
+         run: |
+             git clone https://github.com/ROM-builders/temporary.git -b ginkgo-PixelExperience-twelve-plus-RahulPalXDA temporary
+             cd temporary
+             git commit --allow-empty -m "Trigger new build"
+
+       - name: Pushing commit to repo.
+         uses: ad-m/github-push-action@v0.6.0
+         with:
+           github_token: ${{ secrets.SUPERSECRET }}
+           repository: ROM-builders/temporary
+           directory: temporary
+           branch: ginkgo-PixelExperience-twelve-plus-RahulPalXDA
