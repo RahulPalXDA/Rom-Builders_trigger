@@ -16,7 +16,7 @@ jobs:
 
        - name: Syncing repo & making empty commit.
          run: |
-             git clone https://github.com/ROM-builders/temporary.git -b ginkgo-LineageOS-lineage-18.1-RahulPalXDA temporary
+             git clone https://github.com/ROM-builders/temporary.git -b ginkgo-LineageOS-lineage-17.1-RahulPalXDA temporary
              cd temporary
              git commit --allow-empty -m "Trigger new build"
 
@@ -26,4 +26,4 @@ jobs:
            github_token: ${{ secrets.SUPERSECRET }}
            repository: ROM-builders/temporary
            directory: temporary
-           branch: ginkgo-LineageOS-lineage-18.1-RahulPalXDA
+           branch: ginkgo-LineageOS-lineage-17.1-RahulPalXDA
